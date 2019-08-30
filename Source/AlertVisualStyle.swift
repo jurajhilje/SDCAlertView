@@ -115,6 +115,10 @@ open class AlertVisualStyle: NSObject {
                 self.width = 1
                 self.actionViewSize = CGSize(width: 90, height: 57)
         }
+
+        if #available(iOS 13.0, *) {
+            actionHighlightColor = UIColor.systemGray3
+        }
     }
 
     /// The text color for a given action.
