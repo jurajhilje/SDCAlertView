@@ -8,7 +8,16 @@ class PresentationController: UIPresentationController {
                   presenting presentingViewController: UIViewController?)
     {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-        self.dimmingView.backgroundColor = UIColor(white: 0, alpha: 0.4)
+        
+        var dimmingBackgroundColor = UIColor(white: 0, alpha: 0.4)
+        
+        if #available(iOS 13.0, *) {
+            if traitCollection.userInterfaceStyle == .dark {
+                dimmingBackgroundColor = UIColor(white: 0, alpha: 0.6)
+            }
+        }
+        
+        self.dimmingView.backgroundColor = dimmingBackgroundColor
     }
 
     override func presentationTransitionWillBegin() {
