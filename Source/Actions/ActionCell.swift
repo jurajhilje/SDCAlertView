@@ -26,6 +26,12 @@ final class ActionCell: UICollectionViewCell {
         self.titleLabel.attributedText = action.attributedTitle
 
         self.highlightedBackgroundView.backgroundColor = visualStyle.actionHighlightColor
+        
+        if #available(iOS 13.0, *) {
+            if traitCollection.userInterfaceStyle == .dark {
+                self.highlightedBackgroundView.backgroundColor = UIColor.systemGray3
+            }
+        }
 
         self.setupAccessibility(using: action)
     }
